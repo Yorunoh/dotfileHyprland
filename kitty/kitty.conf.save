@@ -1,0 +1,4 @@
+enable_audio_bell no
+
+shell zsh
+shell-
