@@ -92,6 +92,10 @@ tooltip label {
     color: @fg;
 }
 
+#custom-notification{
+    margin-right: 5px;
+}
+
 #network{
     color: @purple;
 }

@@ -222,7 +222,6 @@
 {
     "position": "top",
     "margin-top": 5,
-    "margin-right": 5,
     "modules-left": [
         "clock",
         "tray"
@@ -247,6 +246,7 @@
             "*": 5
         }
     },
+    
     "modules-center": [
         "hyprland/workspaces"
     ],
@@ -276,6 +276,7 @@
         ],
         "max-length": 25
     },
+    
     "custom/notification": {
         "tooltip": true,
         "format": "<span size='16pt'>{icon}</span>",
