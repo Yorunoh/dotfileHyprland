@@ -225,13 +225,21 @@
     "modules-left": [
         "custom/power",
         "clock",
-        "tray"
+        "tray",
+        "custom/cava"
     ],
+
+    "custom/cava":{
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/cava.sh"
+    },
+    
     "clock": {
         "interval": 60,
         "format": "  {:%H:%M}",
         "format-alt": "{:%b %d, %Y (%R)}",
-        "max-length": 25
+        "max-length": 25,
+        "tooltip": false
     },
     "hyprland/workspaces": {
         "format": "{name}",
@@ -256,11 +264,35 @@
         "spacing": 10
     },
     "modules-right": [
+        "group/scrbacklight",
         "pulseaudio",
         "network",
         "battery",
         "custom/notification"
     ],
+    "backlight": {
+        "device": "intel_backlight",
+        "min-brightness": 1,
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""],
+        "tooltip": false
+    },
+    "backlight/slider": {
+        "min": 1,
+        "max": 100,
+        "orientation": "horizontal",
+        "device": "intel_backlight", 
+        "interval": 1000
+    },
+
+
+    "group/scrbacklight": {
+        "orientation": "horizontal",
+        "modules": [
+            "backlight", "backlight/slider"
+        ]
+    },
+
     "battery": {
         "states": {
             // "good": 95,
@@ -286,7 +318,8 @@
     "custom/power": {
         "format" : "",
 		"tooltip": false,
-		"menu": "on-click",
+        "on-click":"",
+	/*	"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		"menu-actions": {
 			"shutdown": "shutdown",
@@ -294,6 +327,7 @@
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
+    */
     },
 
     "custom/notification": {
