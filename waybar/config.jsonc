@@ -241,6 +241,9 @@
         "max-length": 25,
         "tooltip": false
     },
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
     "hyprland/workspaces": {
         "format": "{name}",
         "format-icons": {
@@ -256,9 +259,7 @@
             "*": 5
         }
     },
-    "modules-center": [
-        "hyprland/workspaces"
-    ],
+
     "tray": {
         "icon-size": 21,
         "spacing": 10
@@ -364,7 +365,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}%",
+        "format": "{icon} {volume}% {format_source}",
         "format-bluetooth": "{icon} {volume}%",
         "format-bluetooth-muted": "{icon}  ",
         "format-muted": " {format_source}",
