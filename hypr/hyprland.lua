@@ -273,7 +273,7 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock")) -- hyprlock
 hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("~/.config/waybar/scripts/launch.sh"))
-hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim")) -- using grim to screenshot
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim")) -- using grim to screenshot. Must install grim first in order to use this
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
