@@ -38,7 +38,7 @@ local terminal    = "kitty"
 local fileManager = "dolphin"
 -- local menu        = "hyprlauncher"
 local menu        = "rofi -show drun"
-
+local windowswitch = "rofi -show window"
 
 -------------------
 ---- AUTOSTART ----
@@ -269,6 +269,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(windowswitch)) --window switch tab
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock")) -- hyprlock
@@ -298,7 +299,7 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
---hl.bind("mouse:273", hl.dsp.window.resize(), { mouse = true }) --need research)
+--hl.bind("mouse:273", hl.dsp.window.resize(), { mouse = true }) --need research
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
