@@ -218,7 +218,10 @@
 		}
     }
 }
-*/ //code above is for reference and taking necessary modules
+*/ 
+//all code above is for reference and taking necessary modules
+
+
 {
     "position": "top",
     "margin-top": 5,
@@ -231,7 +234,7 @@
 
     "custom/cava":{
         "format": "{}",
-        "exec": "~/.config/waybar/scripts/cava.sh"
+        "exec": "$HOME/.config/waybar/scripts/cava.sh"
     },
     
     "clock": {
@@ -318,17 +321,8 @@
 
     "custom/power": {
         "format" : "",
-		"tooltip": false,
-        "on-click":"",
-	/*	"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
-    */
+	"tooltip": true,
+	"on-click": "$HOME/.config/hypr/scripts/wlogout.sh",
     },
 
     "custom/notification": {
