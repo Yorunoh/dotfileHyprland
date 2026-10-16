@@ -273,9 +273,11 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind("ALT + Tab", hl.dsp.exec_cmd(windowswitch)) --window switch tab
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock")) -- hyprlock
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/hyprlock.sh")) --hyprlock
 hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("$HOME/.config/waybar/scripts/launch.sh"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim")) -- using grim to screenshot. Must install grim first in order to use this
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/wlogout.sh")) --wlogout screen
+
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
