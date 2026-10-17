@@ -1,6 +1,6 @@
 # My Hyprland dotfile
 This config file uses configs from many repos and some youtuber
-wi
+
 First, in order to using my ".config" file, make sure you are in ".config" directory first. Usually the path will something be like
 ```
 $HOME/$USER/.config/
