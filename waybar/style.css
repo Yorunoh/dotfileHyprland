@@ -76,7 +76,7 @@ tooltip label {
 #network,
 #clock,
 #scrbacklight,
-#custom-cava,
+#media,
 #custom-notification {
     background-color: @bg0;
     padding: 0 15px 0 15px;
@@ -85,11 +85,17 @@ tooltip label {
     border: 1px solid @bg1;
 }
 
-#custom-cava{
-
+/*
+#custom-cava,
+*/
+#custom-now-playing{
     color: @darkg;
 }
-
+/*
+#custom-cava{
+    
+}
+*/
 #clock{
     color: @blue;
 }

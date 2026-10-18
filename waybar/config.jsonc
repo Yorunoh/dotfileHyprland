@@ -221,6 +221,7 @@
 */ 
 //all code above is for reference and taking necessary modules
 
+//BEGIN CODE FROM HERE
 
 {
     "position": "top",
@@ -229,44 +230,82 @@
         "custom/power",
         "clock",
         "tray",
-        "custom/cava"
+	    "group/media"
     ],
 
-    "custom/cava":{
-        "format": "{}",
-        "exec": "$HOME/.config/waybar/scripts/cava.sh"
-    },
-    
-    "clock": {
-        "interval": 60,
-        "format": "  {:%H:%M}",
-        "format-alt": "{:%b %d, %Y (%R)}",
-        "max-length": 25,
-        "tooltip": false
-    },
+        "custom/power": {
+            "format" : "",
+            "tooltip": true,
+            "on-click": "$HOME/.config/hypr/scripts/wlogout.sh",
+        },
+        
+        "group/media": {
+            "orientation": "horizontal",
+            "modules": ["custom/now-playing"],
+            "tooltip": false,
+            /*
+	    "drawer": {
+                        "transition-duration": 500,
+                        "transition-left-to-right": true,
+                        "click-to-reveal": false,
+                        "start-expanded": false,
+                        "reveal-delay": 200,
+                        "children-class": "drawer-child"
+            }
+	   */
+        },
+	/*
+            "custom/cava": {
+                "format": "{}",
+                "exec": "$HOME/.config/waybar/custom_modules/cava.sh",
+                //"max-length": 6,
+            },
+	*/
+            "custom/now-playing": {
+                "exec": "$HOME/.config/waybar/custom_modules/now-playing.sh",
+		"escape": true,
+	        "on-click": "playerctl play-pause",
+		"on-scroll-up": "playerctl next",
+		"on-scroll-down": "playerctl previous",
+                "interval": 1,
+	        "tooltip": true,
+                "max-length": 20,
+            },
+        
+        "clock": {
+            "interval": 60,
+            "format": "  {:%H:%M}",
+            "format-alt": "{:%b %d, %Y (%R)}",
+            "max-length": 25,
+            "tooltip": false
+        },
+
+        "tray": {
+            "icon-size": 21,
+            "spacing": 10
+        },
+
     "modules-center": [
         "hyprland/workspaces"
     ],
-    "hyprland/workspaces": {
-        "format": "{name}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "active": "",
-            "default": ""
-        },
-        "persistent-workspaces": {
-            "*": 5
-        }
-    },
 
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
+        "hyprland/workspaces": {
+            "format": "{name}",
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "active": "",
+                "default": ""
+            },
+            "persistent-workspaces": {
+                "*": 5
+            }
+        },
+
+
     "modules-right": [
         "group/scrbacklight",
         "pulseaudio",
@@ -274,110 +313,107 @@
         "battery",
         "custom/notification"
     ],
-    "backlight": {
-        "device": "intel_backlight",
-        "min-brightness": 1,
-        "format": "{percent}% {icon}",
-        "format-icons": ["", ""],
-        "tooltip": false
-    },
-    "backlight/slider": {
-        "min": 1,
-        "max": 100,
-        "orientation": "horizontal",
-        "device": "intel_backlight", 
-        "interval": 1000
-    },
 
-
-    "group/scrbacklight": {
-        "orientation": "horizontal",
-        "modules": [
-            "backlight", "backlight/slider"
-        ]
-    },
-
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
-
-    "custom/power": {
-        "format" : "",
-	"tooltip": true,
-	"on-click": "$HOME/.config/hypr/scripts/wlogout.sh",
-    },
-
-    "custom/notification": {
-        "tooltip": true,
-        "format": "<span size='16pt'>{icon}</span>",
-        "format-icons": {
-            "notification": "󱅫",
-            "none": "󰂜",
-            "dnd-notification": "󰂠",
-            "dnd-none": "󰪓",
-            "inhibited-notification": "󰂛",
-            "inhibited-none": "󰪑",
-            "dnd-inhibited-notification": "󰂛",
-            "dnd-inhibited-none": "󰪑"
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
-    "network": {
-        "interface": "wlo1",
-        "format": "{ifname}",
-        "format-wifi": " {essid}",
-        "format-ethernet": "󰊗 {ipaddr}/{cidr}",
-        "format-disconnected": "Disconnected", //An empty format will hide the module.
-        "tooltip-format": "󰊗 {ifname} via {gwaddr}",
-        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": " {ifname}",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{icon} {volume}%",
-        "format-bluetooth-muted": "{icon}  ",
-        "format-muted": " {format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [
-                "",
-                "",
-                ""
+        "group/scrbacklight": {
+            "orientation": "horizontal",
+            "modules": [
+                "backlight", "backlight/slider"
             ]
         },
-        "on-click": "pavucontrol"
+
+            "backlight": {
+                "device": "intel_backlight",
+                "min-brightness": 1,
+                "format": "{percent}% {icon}",
+                "format-icons": ["", ""],
+                "tooltip": false
+            },
+            
+            "backlight/slider": {
+                "min": 1,
+                "max": 100,
+                "orientation": "horizontal",
+                "device": "intel_backlight", 
+                "interval": 1000
+            },
+
+        "battery": {
+            "states": {
+                // "good": 95,
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "{capacity}% {icon}",
+            "format-full": "{capacity}% {icon}",
+            "format-charging": "{capacity}% ",
+            "format-plugged": "{capacity}% ",
+            "format-alt": "{time} {icon}",
+            // "format-good": "", // An empty format will hide the module
+            // "format-full": "",
+            "format-icons": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+
+        "custom/notification": {
+            "tooltip": true,
+            "format": "<span size='16pt'>{icon}</span>",
+            "format-icons": {
+                "notification": "󱅫",
+                "none": "󰂜",
+                "dnd-notification": "󰂠",
+                "dnd-none": "󰪓",
+                "inhibited-notification": "󰂛",
+                "inhibited-none": "󰪑",
+                "dnd-inhibited-notification": "󰂛",
+                "dnd-inhibited-none": "󰪑"
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "swaync-client -t -sw",
+            "on-click-right": "swaync-client -d -sw",
+            "escape": true
+        },
+
+        "network": {
+            "interface": "wlo1",
+            "format": "{ifname}",
+            "format-wifi": " {essid}",
+            "format-ethernet": "󰊗 {ipaddr}/{cidr}",
+            "format-disconnected": "Disconnected", //An empty format will hide the module.
+            "tooltip-format": "󰊗 {ifname} via {gwaddr}",
+            "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+            "tooltip-format-ethernet": " {ifname}",
+            "tooltip-format-disconnected": "Disconnected",
+            "max-length": 50
+        },
+        
+        "pulseaudio": {
+            "scroll-step": 1, // %, can be a float
+            "format": "{icon} {volume}% {format_source}",
+            "format-bluetooth": "{icon} {volume}%",
+            "format-bluetooth-muted": "{icon}  ",
+            "format-muted": " {format_source}",
+            "format-source": " {volume}%",
+            "format-source-muted": "",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": [
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "on-click": "pavucontrol"
+        }
     }
-}
