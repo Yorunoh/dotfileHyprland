@@ -15,13 +15,13 @@ done
 config_file="/tmp/polybar_cava_config"
 echo "
 [general]
-bars = 18
+bars = 18 #18
 
 [output]
 method = raw
 raw_target = /dev/stdout
 data_format = ascii
-ascii_max_range = 7
+ascii_max_range = 7 #7
 " > $config_file
 
 # read stdout from cava
