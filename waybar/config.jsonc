@@ -205,18 +205,6 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
-    }
 }
 */ 
 //all code above is for reference and taking necessary modules
@@ -230,12 +218,12 @@
         "custom/power",
         "clock",
         "tray",
-	    "group/media"
+	"group/media"
     ],
 
         "custom/power": {
             "format" : "",
-            "tooltip": true,
+            "tooltip": false,
             "on-click": "$HOME/.config/hypr/scripts/wlogout.sh",
         },
         
@@ -243,16 +231,6 @@
             "orientation": "horizontal",
             "modules": ["custom/now-playing"],
             "tooltip": false,
-            /*
-	    "drawer": {
-                        "transition-duration": 500,
-                        "transition-left-to-right": true,
-                        "click-to-reveal": false,
-                        "start-expanded": false,
-                        "reveal-delay": 200,
-                        "children-class": "drawer-child"
-            }
-	   */
         },
 	/*
             "custom/cava": {
@@ -263,12 +241,12 @@
 	*/
             "custom/now-playing": {
                 "exec": "$HOME/.config/waybar/custom_modules/now-playing.sh",
-		"escape": true,
-	        "on-click": "playerctl play-pause",
-		"on-scroll-up": "playerctl next",
-		"on-scroll-down": "playerctl previous",
+		        "escape": true,
+	            "on-click": "playerctl play-pause",
+		        "on-scroll-up": "playerctl next",
+		        "on-scroll-down": "playerctl previous",
                 "interval": 1,
-	        "tooltip": true,
+	            "tooltip": true,
                 "max-length": 20,
             },
         
@@ -302,7 +280,7 @@
             },
             "persistent-workspaces": {
                 "*": 5
-            }
+            },
         },
 
 
@@ -316,6 +294,12 @@
 
         "group/scrbacklight": {
             "orientation": "horizontal",
+	        "drawer": {
+		        "click-to-reveal": true,
+	    	    "transition-duration": 500,
+		        "transition-left-to-right": true,
+	        },
+
             "modules": [
                 "backlight", "backlight/slider"
             ]
@@ -325,7 +309,7 @@
                 "device": "intel_backlight",
                 "min-brightness": 1,
                 "format": "{percent}% {icon}",
-                "format-icons": ["", ""],
+                "format-icons": ["", "", "", "", "", "", "", "", ""],
                 "tooltip": false
             },
             
@@ -395,12 +379,12 @@
         
         "pulseaudio": {
             "scroll-step": 1, // %, can be a float
-            "format": "{icon} {volume}% {format_source}",
+            "format": "{icon} {volume}%",
             "format-bluetooth": "{icon} {volume}%",
             "format-bluetooth-muted": "{icon}  ",
             "format-muted": " {format_source}",
-            "format-source": " {volume}%",
-            "format-source-muted": "",
+            //"format-source": " {volume}%",
+            //"format-source-muted": "",
             "format-icons": {
                 "headphone": "",
                 "hands-free": "",
