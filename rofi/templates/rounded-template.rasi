@@ -1,7 +1,3 @@
-/* ROUNDED THEME FOR ROFI */
-/* Author: Newman Sanchez (https://github.com/newmanls) */
-
-
 @theme "themes/rounded-gray-dark.rasi"
 * {
     font:   "JetBriansMono Nerd Font Medium 10";
@@ -11,31 +7,64 @@
 
     margin:     0px;
     padding:    0px;
-    spacing:    0px;
+    spacing:    4px;
+    border-radius: 10px;
 }
 
 window {
-    location:       north;
-    y-offset:       calc(50% - 176px);
-    width:          900;
-    border-radius:  24px;
-
+    location:       center;
+    anchor:         center;
+    width:          950px;
     background-color:   @bg0;
+    fullscreen: false;
+    border: 1px;
+    border-color:  @bg3;
 }
 
 mainbox {
-    padding:    12px;
+    orientation: horizontal;
+    children: ["imagebox", "listview"];
 }
+
+imagebox {
+    children: ["inputbar", "dummy", "mode-switcher"];
+    background-image: url("/home/Yoru/Downloads/Wallpapers/wallpapers/animegirls/violet-evergarden.jpg", height);
+    orientation: vertical;
+    border-radius: 0px;
+}
+
+
+dummy {
+    background-color:            transparent;
+}
+
+mode-switcher{
+    enabled:                     true;
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @bg3;
+}
+
+button {
+    padding:                     15px;
+    margin:                      10px;
+    background-color:            @bg0;
+    text-color:                  @fg2;
+    cursor:                      pointer;
+}
+button selected {
+    background-color:            @bg3;
+    text-color:                  @fg1;
+}
+
 
 inputbar {
     background-color:   @bg1;
     border-color:       @bg3;
+    border: 1px;
+    margin: 20px;
 
-    border:         2px;
-    border-radius:  16px;
-
-    padding:    8px 16px;
-    spacing:    8px;
+    padding:    15px 15px;
     children:   [ prompt, entry ];
 }
 
@@ -45,12 +74,12 @@ prompt {
 
 entry {
     placeholder:        "Search";
+    border-radius: 0px;
     placeholder-color:  @fg3;
 }
 
 message {
     margin:             12px 0 0;
-    border-radius:      16px;
     border-color:       @bg2;
     background-color:   @bg2;
 }
@@ -62,17 +91,17 @@ textbox {
 listview {
     background-color:   transparent;
 
-    margin:     12px 0 0;
+    margin:     20px;
     lines:      8;
     columns:    1;
 
-    fixed-height: false;
+
+    fixed-height: true;
 }
 
 element {
-    padding:        8px 16px;
-    spacing:        8px;
-    border-radius:  16px;
+    padding: 15px 15px;
+    cursor: pointer;
 }
 
 element normal active {
